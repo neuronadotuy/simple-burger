@@ -1,13 +1,42 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/** @format */
+:root {
+	--orderBtn: #f01c4f;
+	--mainColor: #4c3260;
+	--black: #000000;
+	--grey: #6c707b;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400;500;600;700&display=swap');
+
+@font-face {
+	font-family: 'CocogooseBold';
+	src: local('CocogooseBold'),
+		url('./fonts/Cocogoose/Cocogoose-Pro-Block-Shadow-black-Trial.woff')
+			format('woff');
+}
+
+@font-face {
+	font-family: 'CocogooseLetter';
+	src: local('CocogooseBold'),
+		url('./fonts/Cocogoose/Cocogoose-Pro-Letterpress-Trial.woff') format('woff');
+}
+
+* {
+	font-family: -apple-system, BlinkMacSystemFont, ‘Segoe UI’, Roboto, Oxygen,
+		Ubuntu, Cantarell, ‘Open Sans’, ‘Helvetica Neue’, sans-serif;
+	margin: 0;
+}
+
+.other__section {
+	padding-bottom: 200px;
+}
+
+.card__container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 264px);
+	gap: 28px;
+	padding: 0 120px;
+	justify-content: center;
+	justify-items: space-between;
+	align-items: center;
 }
