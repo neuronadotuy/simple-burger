@@ -130,7 +130,7 @@ const Cards = ({
 					</SelectBtn>
 				</div>
 			</Card>
-			d
+			{modal ? <Modal modal={modal} /> : null}
 		</Fragment>
 	);
 };
