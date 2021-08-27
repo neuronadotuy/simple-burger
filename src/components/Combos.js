@@ -1,13 +1,10 @@
 /** @format */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import Title from './Title';
 import styled from '@emotion/styled';
 import Card from './Cards';
-import burger1 from '../assets/burger1.png';
-import burger2 from '../assets/burger2.png';
-import burger3 from '../assets/burger3.png';
-import burger4 from '../assets/burger4.png';
+import Context from '../context/modal/Context';
 import bgImg from '../assets/bg_image_icons.png';
 
 const ComboContainer = styled.div`
@@ -48,38 +45,27 @@ const ComboContainer = styled.div`
 `;
 
 const Combos = () => {
+	const context = useContext(Context);
+	const { menu } = context;
+
 	return (
 		<ComboContainer>
 			<Title subtitle='complete for you' title='combos' />
 			<div className='card__container'>
-				<Card
-					cardimg={burger1}
-					cardtitle='Combo Burger'
-					carddesc='Simple but jucy burger. Choose your toppings.'
-					isPrice
-					priceBtn='9.99'
-				/>
-				<Card
-					cardimg={burger2}
-					cardtitle='Combo Double Burger'
-					carddesc='Double jucy delicious burger. Choose your toppings.'
-					isPrice
-					priceBtn='10.99'
-				/>
-				<Card
-					cardimg={burger3}
-					cardtitle='Combo Burger + Cheese'
-					carddesc='What’s a burger without cheese? Choose your toppings.'
-					isPrice
-					priceBtn='11.99'
-				/>
-				<Card
-					cardimg={burger4}
-					cardtitle='Combo Double Burger + Cheese'
-					carddesc='What’s a burger without melted delicious DOUBLE cheese?'
-					isPrice
-					priceBtn='15.49'
-				/>
+				{menu.map((menuItem) => {
+					const { image, title, desc, price, id, onMenu } = menuItem;
+					return onMenu === 'combo' ? (
+						<Card
+							menu={menu}
+							key={id}
+							cardimg={image}
+							cardtitle={title}
+							carddesc={desc}
+							isPrice
+							priceBtn={price}
+						/>
+					) : null;
+				})}
 			</div>
 			<div className='bg__image bg__image--left'></div>
 			<div className='bg__image bg__image--right'></div>

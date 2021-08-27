@@ -104,7 +104,7 @@ const Cards = ({
 	btninfo,
 }) => {
 	const context = useContext(Context);
-	const { showModal } = context;
+	const { menu, showModal } = context;
 
 	const handleClick = () => {
 		showModal();
@@ -123,7 +123,7 @@ const Cards = ({
 				<div className='card__btns'>
 					<PriceBtn className='btn'>
 						<span>{isPrice ? `$` : null}</span>
-						{priceBtn}
+						{priceBtn.toFixed(2)}
 					</PriceBtn>
 					<SelectBtn className='btn' onClick={handleClick}>
 						<img src={cartImg} alt='' /> {btninfo ? btninfo : 'Select'}
