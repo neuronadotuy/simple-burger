@@ -1,9 +1,9 @@
 /** @format */
 
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import styled from '@emotion/styled';
 import cartImg from '../assets/cart.svg';
-import Modal from './Modal';
+import Context from '../context/modal/Context';
 
 const Card = styled.div`
 	width: 264px;
@@ -103,8 +103,12 @@ const Cards = ({
 	isPrice,
 	btninfo,
 }) => {
-	const [modal, setModal] = useState(false);
-	const handleClick = () => setModal(!modal);
+	const context = useContext(Context);
+	const { showModal } = context;
+
+	const handleClick = () => {
+		showModal();
+	};
 
 	return (
 		<Fragment>
@@ -121,16 +125,11 @@ const Cards = ({
 						<span>{isPrice ? `$` : null}</span>
 						{priceBtn}
 					</PriceBtn>
-					<SelectBtn
-						className='btn'
-						onClick={() => {
-							handleClick();
-						}}>
+					<SelectBtn className='btn' onClick={handleClick}>
 						<img src={cartImg} alt='' /> {btninfo ? btninfo : 'Select'}
 					</SelectBtn>
 				</div>
 			</Card>
-			{modal ? <Modal modal={modal} /> : null}
 		</Fragment>
 	);
 };

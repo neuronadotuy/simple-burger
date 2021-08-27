@@ -7,10 +7,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './fonts/Cocogoose/Cocogoose-Pro-Block-Shadow-black-Trial.woff';
 import './fonts/Cocogoose/Cocogoose-Pro-Letterpress-Trial.woff';
+import State from './context/modal/State';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<State>
+			<App />
+		</State>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
